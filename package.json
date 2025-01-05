@@ -1,0 +1,38 @@
+{
+  "name": "aws-chatbot-custom-notifications",
+  "version": "0.1.0",
+  "bin": {
+    "custom-notifications": "bin/custom-notifications.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rm -rf dist package-lock.json node_modules",
+    "test": "jest",
+    "cdk": "cdk",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.94.1",
+    "@types/jest": "^26.0.10",
+    "@types/node": "^10.17.27",
+    "aws-cdk": "1.94.1",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.2.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-chatbot": "^1.204.0",
+    "@aws-cdk/aws-iam": "^1.204.0",
+    "@aws-cdk/aws-lambda": "^1.204.0",
+    "@aws-cdk/aws-lambda-nodejs": "^1.204.0",
+    "@aws-cdk/aws-s3": "^1.204.0",
+    "@aws-cdk/aws-s3-notifications": "^1.204.0",
+    "@aws-cdk/aws-stepfunctions": "^1.204.0",
+    "@aws-cdk/aws-stepfunctions-tasks": "^1.204.0",
+    "@aws-cdk/core": "^1.94.1",
+    "@aws-sdk/client-sns": "^3.295.0",
+    "source-map-support": "^0.5.16"
+  }
+}
