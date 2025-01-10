@@ -4,16 +4,18 @@ import { SlackChannelConfiguration } from "@aws-cdk/aws-chatbot";
 import { NodejsFunction } from "@aws-cdk/aws-lambda-nodejs";
 import * as iam from '@aws-cdk/aws-iam';
 import * as lambda from "@aws-cdk/aws-lambda";
-import * as s3 from "@aws-cdk/aws-s3";
 import * as sfn from '@aws-cdk/aws-stepfunctions';
 import * as tasks from '@aws-cdk/aws-stepfunctions-tasks';
-import * as s3Notifications from "@aws-cdk/aws-s3-notifications";
 import { Topic } from "@aws-cdk/aws-sns";
+import 'dotenv/config'
 
 export class CustomNotificationsStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
+    const { SLACK_WORKSPACE_ID, SLACK_CHANNEL_ID } = process.env;
+    if (!SLACK_WORKSPACE_ID || !SLACK_CHANNEL_ID) {
+      throw new Error("Missing environment variables: SLACK_WORKSPACE_ID or SLACK_CHANNEL_ID");
+    }
     // create sns topic
     const customNotificationsTopic = new Topic(this, "custom-notif-topic", {
       displayName: "CustomNotificationsTopic",
@@ -60,7 +62,7 @@ export class CustomNotificationsStack extends cdk.Stack {
     tranformDataLambda.addToRolePolicy(snsTopicPolicy)
 
     // create step function
-    const stateMachine = new sfn.StateMachine(this, 'DataProcessingStateMachine', {
+    new sfn.StateMachine(this, 'DataProcessingStateMachine', {
       definition: new tasks.LambdaInvoke(this, "ExtractOrders", {
         lambdaFunction: extractDataLambda,
         // Assuming this Lambda function handles extracting orders from DB
@@ -80,8 +82,8 @@ export class CustomNotificationsStack extends cdk.Stack {
       "custom-notification-configuration",
       {
         slackChannelConfigurationName: "custom-notification-configuration",
-        slackWorkspaceId: "T5EMPHE0K",
-        slackChannelId: "C046SE7BBGQ",
+        slackWorkspaceId: SLACK_WORKSPACE_ID,
+        slackChannelId: SLACK_CHANNEL_ID,
       }
     );
 

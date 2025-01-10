@@ -33,6 +33,7 @@
     "@aws-cdk/aws-stepfunctions-tasks": "^1.204.0",
     "@aws-cdk/core": "^1.94.1",
     "@aws-sdk/client-sns": "^3.295.0",
+    "dotenv": "^16.4.7",
     "source-map-support": "^0.5.16"
   }
 }

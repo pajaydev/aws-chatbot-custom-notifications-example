@@ -13,7 +13,7 @@ export type Order = {
 export const handler = async (event: Record<string, any>) => {
     console.log(`Extract data event: ${event}`);
 
-    // fetch data from dynamo, using the mock data here
+    // fetch data from data source, using the mock data here
     const orders: Order[] = [
         { id: 101, product: 'laptop', quantity: 1, price: 1200, soldPrice: 1000 },        
         { id: 102, product: 'monitor', quantity: 2, price: 400, soldPrice: 350 }
