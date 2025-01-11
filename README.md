@@ -1,8 +1,58 @@
-# Welcome to your CDK TypeScript project!
+# AWS Chatbot Custom Notification
 
-This is a blank project for TypeScript development with CDK.
+This project demonstrates how to customize and send a [custom notification](https://docs.aws.amazon.com/chatbot/latest/adminguide/custom-notifs.html) message from AWS Step function to slack via AWS Chatbot. 
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+![Architecture Diagram](img/architecture.png|width=250)
+
+## Prerequisite
+
+* Configure [AWS CLI](https://aws.amazon.com/cli/) and configured it with your credentials
+* Should have an AWS account and have set up your [AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+* Go to AWS Chatbot(https://console.aws.amazon.com/chatbot/) and perform OAuth to configure a slack workspace. Kindly follow this instructions in [step 1](https://docs.aws.amazon.com/chatbot/latest/adminguide/slack-setup.html#slack-client-setup)
+
+
+## Setup
+
+Clone this repo:
+```bash
+git clone https://github.com/aws-samples/aws-cdk-examples.git
+```
+
+Build this app using below commands:
+```bash
+npm install -g aws-cdk
+npm install
+npm run build
+```
+
+Configure environment variables - Replace `.env` file in this project with slack workspace Id and channel Id
+
+## Deployment
+
+Synthesize the CloudFormation template using below command:
+```bash
+cdk synth
+```
+
+Deploy the stack using below command:
+```bash
+cdk deploy
+```
+
+## Trigger a Notification
+
+
+## Clean Up
+
+To clean up, issue this command:
+```bash
+cdk destroy
+```
+
+## Troubleshooting
+
+Kindly create an issue if you face any issues
+
 
 ## Useful commands
 

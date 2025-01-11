@@ -10,6 +10,7 @@ export const sendMessageToChatbot = async(title: string, description: string) =>
 
     // custom notification schema
     // https://docs.aws.amazon.com/chatbot/latest/adminguide/custom-notifs.html
+    // Event Schema: https://docs.aws.amazon.com/chatbot/latest/adminguide/custom-notifs.html#event-schema
     const content = {
         version: "1.0",
         source: "custom",
