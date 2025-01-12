@@ -2,7 +2,7 @@
 
 This project demonstrates how to customize and send a [custom notification](https://docs.aws.amazon.com/chatbot/latest/adminguide/custom-notifs.html) message from AWS Step function to slack via AWS Chatbot. 
 
-![Architecture Diagram](img/architecture.png|width=250)
+<img src="img/architecture.png" height="300">
 
 ## Prerequisite
 
@@ -41,6 +41,11 @@ cdk deploy
 
 ## Trigger a Notification
 
+Trigger the deployed step function using below command
+
+```bash
+./scripts/trigger-step-function.sh
+```
 
 ## Clean Up
 

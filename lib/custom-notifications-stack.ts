@@ -62,7 +62,7 @@ export class CustomNotificationsStack extends cdk.Stack {
     tranformDataLambda.addToRolePolicy(snsTopicPolicy)
 
     // create step function
-    new sfn.StateMachine(this, 'DataProcessingStateMachine', {
+    const stateMachine = new sfn.StateMachine(this, 'DataProcessingStateMachine', {
       definition: new tasks.LambdaInvoke(this, "ExtractOrders", {
         lambdaFunction: extractDataLambda,
         // Assuming this Lambda function handles extracting orders from DB
@@ -86,7 +86,8 @@ export class CustomNotificationsStack extends cdk.Stack {
         slackChannelId: SLACK_CHANNEL_ID,
       }
     );
-
+    
+    // subscribe chatbot configuration with SNS topic
     slackConfiguration.addNotificationTopic(customNotificationsTopic);
   }
 }
