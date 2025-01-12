@@ -15,7 +15,7 @@ This project demonstrates how to customize and send a [custom notification](http
 
 Clone this repo:
 ```bash
-git clone https://github.com/aws-samples/aws-cdk-examples.git
+git clone https://github.com/pajaydev/aws-chatbot-custom-notifications-example.git
 ```
 
 Build this app using below commands:
@@ -46,6 +46,10 @@ Trigger the deployed step function using below command
 ```bash
 ./scripts/trigger-step-function.sh
 ```
+
+## Result
+
+<img src="img/slack.png" height="300">
 
 ## Clean Up
 
